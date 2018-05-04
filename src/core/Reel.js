@@ -51,6 +51,7 @@ export default class Reel {
 	
 	startRotation(randomReel, callback) {
 		this.animation = true;
+		this.selected = randomReel;
 		this.stopAnimation()
 		this.startAnimation(randomReel, callback);
 	}
@@ -81,5 +82,17 @@ export default class Reel {
 	stopAnimation() {
 		let delay = 3000 + this.delayStop;
 		setTimeout(() => this.animation = false, delay);
+	}
+
+	get result() {
+		let result = {};
+		this.singleReel.forEach((item, i) => {
+			if (item.id === this.selected) {
+				result.middleRow = item.id;
+				result.lastRow = this.singleReel[(i + 1 === 6 ? 0 : i + 1)].id;
+				result.firstRow = this.singleReel[(i - 1 < 0 ? 5 : i - 1)].id;
+			}
+		})
+		return result;
 	}
 }

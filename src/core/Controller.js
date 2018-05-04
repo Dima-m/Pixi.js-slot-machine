@@ -28,6 +28,7 @@ export default class Controller {
 		this.stopCount++;
 		if (this.stopCount === 5) {
 			this.button.buttonActiveToggle();
+			this.reels.checkRows(this.reels.finalResult)
 		}
 	}
 
