@@ -32,7 +32,7 @@ export default class Reel {
 		let turned = [];
 		for (i = 0; i < turn.length; i++) {
 			this.singleReel.forEach(item => {
-				if (item.id == turn[i]) turned.push(item)
+				if (item.id === turn[i]) turned.push(item)
 			})
 		}
 		this.singleReel = turned;
